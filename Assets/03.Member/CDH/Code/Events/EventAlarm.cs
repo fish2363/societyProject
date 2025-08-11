@@ -1,4 +1,4 @@
-﻿using Assets._03.Member.CDH.Code.GameEvent;
+﻿
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
