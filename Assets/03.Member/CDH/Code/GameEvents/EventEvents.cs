@@ -1,6 +1,6 @@
 ﻿using Assets._03.Member.CDH.Code.Events;
 
-namespace Assets._03.Member.CDH.Code.GameEvent
+namespace Assets._03.Member.CDH.Code.GameEvents
 {
     public static class EventEvents
     {

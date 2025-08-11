@@ -1,4 +1,4 @@
-﻿using Assets._03.Member.CDH.Code.GameEvent;
+﻿using Assets._03.Member.CDH.Code.GameEvents;
 using System;
 using System.Collections.Generic;
 using System.Linq;

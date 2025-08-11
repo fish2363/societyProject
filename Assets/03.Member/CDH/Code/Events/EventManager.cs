@@ -1,8 +1,8 @@
-﻿using Assets._03.Member.CDH.Code.GameEvent;
+﻿
+using Assets._03.Member.CDH.Code.GameEvents;
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace Assets._03.Member.CDH.Code.Events
 {
@@ -34,10 +34,10 @@ namespace Assets._03.Member.CDH.Code.Events
                 Destroy(newEvent.gameObject);
                 currentAlarms.Remove(newEvent);
             });
-            
+
             currentAlarms.Add(newEvent);
 
-            currentAlarms.ForEach(alarm => 
+            currentAlarms.ForEach(alarm =>
             {
                 alarm.transform.DOMoveY(alarm.transform.position.y - alarmEndValue, alarmDuration, true);
             });
