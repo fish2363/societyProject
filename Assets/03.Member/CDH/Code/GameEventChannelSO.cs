@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _03.Member.CDH.Code
+namespace Assets._03.Member.CDH.Code
 {
     public class GameEvent
     {
