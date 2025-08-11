@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a54da8ac88ac94192e8b0c3f9f03e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 248f5daa21378e945bf167fe4b3b9d92, type: 3}
   m_Name: EventsSO
   m_EditorClassIdentifier: 
   events:
-  - evtName: "\uD14C\uC2A4\uD2B8_1"
-    evtDescription: "\uD14C\uC2A4\uD2B8_1"
-  - evtName: "\uD14C\uC2A4\uD2B8_2"
-    evtDescription: "\uD14C\uC2A4\uD2B8_2"
+  - evtName: "\uD14C\uC2A4\uD2B81"
+    evtDescription: "\uD14C\uC2A4\uD2B81"

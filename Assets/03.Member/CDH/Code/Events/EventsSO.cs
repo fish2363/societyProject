@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-namespace Assets._03.Member.CDH.Code
+namespace Assets._03.Member.CDH.Code.Events
 {
     [CreateAssetMenu(fileName = "EventsSO", menuName = "SO/EventsSO")]
     public class EventsSO : ScriptableObject
