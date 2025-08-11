@@ -1,21 +1,17 @@
 ﻿using Assets._03.Member.CDH.Code.GameEvent;
+using TMPro;
 using UnityEngine;
 
 namespace Assets._03.Member.CDH.Code.Events
 {
     public class EventAlarm : MonoBehaviour
     {
-        [SerializeField] private GameEventChannelSO eventChannelSO;
-        [SerializeField] private GameObject eventPrefab;
+        [SerializeField] private TextMeshProUGUI evtName, evtDescription;
 
-        private void Awake()
+        public void SetNameAndDescription(string name,  string description)
         {
-            eventChannelSO.AddListener<EventIssue>(EventIssueHandler);
-        }
-
-        private void EventIssueHandler(EventIssue issue)
-        {
-
+            evtName.text = name;
+            evtDescription.text = description;
         }
     }
 }
