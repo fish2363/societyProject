@@ -17,13 +17,14 @@ public class GridBuildingSystem : MonoBehaviour
             Destroy(PreviewBlock);
         }
         PreviewBlock = Instantiate(gameObject, Vector3.zero, Quaternion.identity);
+        PreviewBlock.GetComponent<BoxCollider>().isTrigger = false;
 
         foreach (Renderer block in PreviewBlock.GetComponentsInChildren<Renderer>())
         {
 
            Material m = block.material;
             Color c = Color.green;
-            c.a = 0.3f;
+            c.a = 0.0f;
             m.color = c;
 
         }
