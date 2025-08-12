@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 567611625}
   serializedVersion: 2
   m_LocalRotation: {x: 0.3047812, y: 0, z: 0, w: 0.95242244}
-  m_LocalPosition: {x: 7.3, y: 31.2, z: -19.8}
+  m_LocalPosition: {x: -0.6, y: 36.23, z: -26.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -443,7 +443,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9f938eb42c33662498711b3fd3d1507a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -483,7 +483,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1958872910}
-  BlockToBuild: {fileID: 9160155742951852825, guid: 652fa4b08bfa2a242b4ee187194b082e, type: 3}
+  blockToBuild: {fileID: 9160155742951852825, guid: 652fa4b08bfa2a242b4ee187194b082e, type: 3}
   CanCreateLayerMask:
     serializedVersion: 2
     m_Bits: 64
