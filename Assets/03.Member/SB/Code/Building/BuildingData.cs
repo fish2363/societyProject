@@ -9,8 +9,6 @@ public class BuildingData : ScriptableObject
     public GameObject buildingPrefab;
     public int cost;
  
-    [Header("배치 관련")]
-    public Vector3 buildingSize;
-    public Vector2 baseSize;
+   
   
 }

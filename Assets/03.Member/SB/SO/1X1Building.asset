@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6e71efadc71b1e45b01db107e72287c, type: 3}
-  m_Name: 2X2Building
+  m_Name: 1X1Building
   m_EditorClassIdentifier: 
-  buildingName: "\uBE4C\uB529"
-  buildingPrefab: {fileID: 9160155742951852825, guid: c7d7d3562e7f91345ad12a1207c27e00, type: 3}
+  buildingName: "\uAF2C\uB9C8\uBE4C\uB529"
+  gridSize: {x: 0, y: 0}
+  buildingPrefab: {fileID: 9160155742951852825, guid: 652fa4b08bfa2a242b4ee187194b082e, type: 3}
   cost: 100
-  buildingSize: {x: 5, y: 7, z: 5}
-  baseSize: {x: 1.5, y: 1.5}

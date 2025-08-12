@@ -1,4 +1,6 @@
-﻿using Unity.VisualScripting;
+﻿
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -6,7 +8,7 @@ using UnityEngine.UIElements;
 public class GridBuildingSystem : MonoBehaviour
 {
     [SerializeField] private Grid grid;
-    public GameObject blockToBuild;
+    public BuildingData blockToBuild;
     private GameObject previewBlock;
     [SerializeField] private LayerMask CanCreateLayerMask;
 
@@ -17,7 +19,7 @@ public class GridBuildingSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SetPriviewBlock(blockToBuild);
+            SetPriviewBlock(blockToBuild.buildingPrefab);
         }
 
         RaycastHit hit = TryGetRaycastHit(Input.mousePosition);
@@ -27,9 +29,9 @@ public class GridBuildingSystem : MonoBehaviour
         if (previewBlock)
         {
             Vector3 CellPos = grid.GetCellCenterWorld(cell);
-            previewBlockPos = new Vector3(CellPos.x, CellPos.y + (previewBlock.transform.localScale.y / 2 - 0.6f), CellPos.z);
+            previewBlockPos = new Vector3(CellPos.x, CellPos.y + (previewBlock.transform.localScale.y / 2 - 0.3f), CellPos.z);
 
-           
+
             bool canCreate = CheckCanCreate();
             Color c = canCreate == true ? Color.green : Color.red;
             foreach (Renderer block in previewBlock.GetComponentsInChildren<Renderer>())
@@ -44,8 +46,9 @@ public class GridBuildingSystem : MonoBehaviour
             {
                 if (canCreate)
                 {
-                    GameObject go = Instantiate(blockToBuild, previewBlockPos, Quaternion.identity);
+                    GameObject go = Instantiate(blockToBuild.buildingPrefab, previewBlockPos, Quaternion.identity);
                     go.layer = LayerMask.NameToLayer("CantCreate");
+                    go.GetComponentsInChildren<BoxCollider>().ToList().ForEach(x => x.gameObject.layer = LayerMask.NameToLayer("CantCreate"));
                 }
                 else
                 {

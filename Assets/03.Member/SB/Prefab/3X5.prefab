@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4803809059368476874}
   - component: {fileID: 6371928402583326569}
   m_Layer: 0
-  m_Name: 4X4
+  m_Name: 3X5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,8 +136,8 @@ Transform:
   m_GameObject: {fileID: 9160155742951852825}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.5, y: 0.5, z: 22.5}
-  m_LocalScale: {x: 20, y: 14, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 15, y: 14, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4583966562066334146}
