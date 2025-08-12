@@ -11,32 +11,8 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] private LayerMask CanCreateLayerMask;
 
     private Vector3 previewBlockPos;
-    private Vector3 lastSelectedPosition;
     private Vector3 detectScale;
 
-    
-    public void SetPriviewBlock(GameObject gameObject)
-    {
-        if(previewBlock)
-            Destroy(previewBlock);
-
-        previewBlock = Instantiate(gameObject, Vector3.zero, Quaternion.identity);
-        previewBlock.GetComponent<BoxCollider>().isTrigger = false;
-
-        foreach (Renderer block in previewBlock.GetComponentsInChildren<Renderer>())
-        {
-            Material m = block.material;
-            Color c = Color.green;
-            c.a = 0.0f;
-            m.color = c;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(previewBlockPos, detectScale);
-    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -53,27 +29,21 @@ public class GridBuildingSystem : MonoBehaviour
             Vector3 CellPos = grid.GetCellCenterWorld(cell);
             previewBlockPos = new Vector3(CellPos.x, CellPos.y + (previewBlock.transform.localScale.y / 2 - 0.6f), CellPos.z);
 
+           
+            bool canCreate = CheckCanCreate();
+            Color c = canCreate == true ? Color.green : Color.red;
+            foreach (Renderer block in previewBlock.GetComponentsInChildren<Renderer>())
+            {
+                Material m = block.material;
+                c.a = 0.0f;
+                m.color = c;
+            }
             previewBlock.transform.position = previewBlockPos;
 
             if (Input.GetMouseButtonDown(0))
             {
-                
-                detectScale = previewBlock.transform.localScale;
-                detectScale = new Vector3(detectScale.x - 0.4f, detectScale.y - 0.4f,detectScale.z - 0.4f);
-                Collider[] colliders = Physics.OverlapBox(previewBlockPos, detectScale/2);
-             
-                bool canCreate = true;
-                foreach (Collider collider in colliders)
-                {
-                    if(collider.gameObject.layer == LayerMask.NameToLayer("CantCreate"))
-                    {
-                        canCreate = false;
-                    }
-                }
-
                 if (canCreate)
                 {
-
                     GameObject go = Instantiate(blockToBuild, previewBlockPos, Quaternion.identity);
                     go.layer = LayerMask.NameToLayer("CantCreate");
                 }
@@ -85,7 +55,40 @@ public class GridBuildingSystem : MonoBehaviour
             }
         }
     }
-    
+    private bool CheckCanCreate()
+    {
+        detectScale = previewBlock.transform.localScale;
+        detectScale = new Vector3(detectScale.x, detectScale.y, detectScale.z);
+        Collider[] colliders = Physics.OverlapBox(previewBlockPos, detectScale / 2);
+
+        bool value = true;
+        foreach (Collider collider in colliders)
+        {
+            if (collider.gameObject.layer == LayerMask.NameToLayer("CantCreate"))
+            {
+                value = false;
+            }
+        }
+
+        return value;
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(previewBlockPos, detectScale);
+    }
+    public void SetPriviewBlock(GameObject gameObject)
+    {
+        if (previewBlock)
+            Destroy(previewBlock);
+
+        previewBlock = Instantiate(gameObject, Vector3.zero, Quaternion.identity);
+        previewBlock.GetComponent<BoxCollider>().isTrigger = false;
+
+
+    }
     RaycastHit TryGetRaycastHit(Vector3 mousePos)
     {
         mousePos.z = Camera.main.nearClipPlane;
