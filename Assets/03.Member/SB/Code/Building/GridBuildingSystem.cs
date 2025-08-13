@@ -14,17 +14,22 @@ public class GridBuildingSystem : MonoBehaviour
 
     private Vector3 previewBlockPos;
     private Vector3 detectScale;
+    Vector3 drawPos;
+    Vector3 baseSize;
+  
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SetPriviewBlock(blockToBuild.buildingPrefab);
-        }
+      
 
         RaycastHit hit = TryGetRaycastHit(Input.mousePosition);
         Vector3 selectedPos = hit.point;
         Vector3Int cell = grid.WorldToCell(selectedPos);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SetPriviewBlock(blockToBuild.buildingPrefab, cell);
+        }
 
         if (previewBlock)
         {
@@ -60,9 +65,12 @@ public class GridBuildingSystem : MonoBehaviour
     }
     private bool CheckCanCreate()
     {
-        detectScale = previewBlock.transform.localScale;
-        detectScale = new Vector3(detectScale.x, detectScale.y, detectScale.z);
-        Collider[] colliders = Physics.OverlapBox(previewBlockPos, detectScale / 2);
+        float height = previewBlock.GetComponent<BoxCollider>().size.y;
+        detectScale = new Vector3(baseSize.x, height, baseSize.z);
+        drawPos = previewBlock.transform.position;
+        drawPos = new Vector3(drawPos.x, drawPos.y + (detectScale.y / 2), drawPos.z);
+
+        Collider[] colliders = Physics.OverlapBox(drawPos, detectScale / 2);
 
         bool value = true;
         foreach (Collider collider in colliders)
@@ -80,15 +88,16 @@ public class GridBuildingSystem : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(previewBlockPos, detectScale);
+        Gizmos.DrawWireCube(drawPos, detectScale);
     }
-    public void SetPriviewBlock(GameObject gameObject)
+    public void SetPriviewBlock(GameObject gameObject,Vector3 currentPos)
     {
         if (previewBlock)
             Destroy(previewBlock);
 
-        previewBlock = Instantiate(gameObject, Vector3.zero, Quaternion.identity);
+        previewBlock = Instantiate(gameObject, currentPos, Quaternion.identity);
         previewBlock.GetComponent<BoxCollider>().isTrigger = false;
+        baseSize = blockToBuild.basePrefab.GetComponent<BoxCollider>().size;
 
 
     }

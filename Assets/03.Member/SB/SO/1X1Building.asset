@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 1X1Building
   m_EditorClassIdentifier: 
   buildingName: "\uAF2C\uB9C8\uBE4C\uB529"
-  gridSize: {x: 0, y: 0}
-  buildingPrefab: {fileID: 9160155742951852825, guid: 652fa4b08bfa2a242b4ee187194b082e, type: 3}
+  buildingPrefab: {fileID: 6859701509470930334, guid: 627a54a9d79599b4b84bc2b41d5cb61e, type: 3}
+  basePrefab: {fileID: 333682286846824807, guid: ca3c08c024f7ff54fae001b8d15e26d5, type: 3}
   cost: 100

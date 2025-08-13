@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: 2X2Building
   m_EditorClassIdentifier: 
   buildingName: "\uBE4C\uB529"
-  buildingPrefab: {fileID: 9160155742951852825, guid: c7d7d3562e7f91345ad12a1207c27e00, type: 3}
-  cost: 100
-  buildingSize: {x: 5, y: 7, z: 5}
-  baseSize: {x: 1.5, y: 1.5}
+  buildingPrefab: {fileID: 6506189090876817602, guid: d85d5d469431de947bdbe95681992b5c, type: 3}
+  basePrefab: {fileID: 7610631306544670504, guid: db91667d8281d8f4ca75da750781dbfb, type: 3}
+  cost: 0
