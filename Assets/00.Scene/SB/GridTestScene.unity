@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 1958872910}
-  blockToBuild: {fileID: 11400000, guid: 426d69d17da8acb43a857b2c514acde1, type: 2}
+  blockToBuild: {fileID: 11400000, guid: ead67dd3c2f26c8409b2812e5cc7e2e6, type: 2}
   CanCreateLayerMask:
     serializedVersion: 2
     m_Bits: 64

@@ -42,6 +42,7 @@ public class GridBuildingSystem : MonoBehaviour
             foreach (Renderer block in previewBlock.GetComponentsInChildren<Renderer>())
             {
                 Material m = block.material;
+                m.SetFloat("_Mode", 2);
                 c.a = 0.0f;
                 m.color = c;
             }
@@ -97,7 +98,8 @@ public class GridBuildingSystem : MonoBehaviour
 
         previewBlock = Instantiate(gameObject, currentPos, Quaternion.identity);
         previewBlock.GetComponent<BoxCollider>().isTrigger = false;
-        baseSize = blockToBuild.basePrefab.GetComponent<BoxCollider>().size;
+        BoxCollider boxColider = blockToBuild.basePrefab.GetComponent<BoxCollider>();
+        baseSize = Vector3.Scale(boxColider.size, boxColider.transform.lossyScale);
 
 
     }
