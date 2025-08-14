@@ -6,6 +6,7 @@ public class Human : MonoBehaviour
 
     [SerializeField] HatContainer hatContainer;
 
+    public bool IsWorker { get; private set; }
 
     [HideInInspector]
     public Vector3 position;
@@ -40,16 +41,18 @@ public class Human : MonoBehaviour
         hatContainer.RandomWearHat();
     }
 
-    public void Initialize(HumanSettingSO settings, Transform target)
+    public void Initialize(HumanSettingSO settings, Transform target, Vector3 initialForward)
     {
         this.target = target;
-        settingSO = settings;
+        this.settingSO = settings;
 
         position = cachedTransform.position;
-        forward = cachedTransform.forward;
+        forward = initialForward.normalized; // 스폰 시 방향 그대로 사용
 
         float startSpeed = (settings.minSpeed + settings.maxSpeed) / 2;
-        velocity = transform.forward * startSpeed;
+        velocity = forward * startSpeed;
+
+        cachedTransform.forward = forward; // 시각적으로도 초기 방향 적용
     }
     public void UpdateBoid()
     {
