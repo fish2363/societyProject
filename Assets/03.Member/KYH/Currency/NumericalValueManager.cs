@@ -15,7 +15,10 @@ public class NumericalValueManager : MonoBehaviour
     {
         numericalValueDic = new Dictionary<NumericalValueType, int>
         {
-            { NumericalValueType.Money, 0 },
+            { NumericalValueType.Money, 0},
+            { NumericalValueType.Happiness, 0},
+            { NumericalValueType.PeopleCnt, 0},
+            { NumericalValueType.Warming, 0},
         };
 
         if (Instance == null)
