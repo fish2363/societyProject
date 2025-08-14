@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Unity.Collections.AllocatorManager;
 
 public class GridBuildingSystem : MonoBehaviour
 {
@@ -39,13 +40,17 @@ public class GridBuildingSystem : MonoBehaviour
 
             bool canCreate = CheckCanCreate();
             Color c = canCreate == true ? Color.green : Color.red;
-            foreach (Renderer block in previewBlock.GetComponentsInChildren<Renderer>())
+            Renderer[] renderers = previewBlock.GetComponentsInChildren<Renderer>();
+            
+            foreach (Renderer renderer in renderers)
             {
-                Material m = block.material;
-                m.SetFloat("_Mode", 2);
-                c.a = 0.0f;
+                Material m = renderer.material;
+                c.a = 0.4f;
                 m.color = c;
             }
+              
+           
+            
             previewBlock.transform.position = previewBlockPos;
 
             if (Input.GetMouseButtonDown(0))
