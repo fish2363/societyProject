@@ -4,11 +4,14 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEditor.EditorTools;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets._03.Member.CDH.Code.Events
 {
     public class EventManager : MonoBehaviour
     {
+        public UnityEvent OnAlarmSelect;
+
         [SerializeField] private GameEventChannelSO eventChannelSO;
         [SerializeField] private PoolingItemSO eventPrefab;
         [SerializeField] private Transform parent;
@@ -28,11 +31,14 @@ namespace Assets._03.Member.CDH.Code.Events
         private void EventIssueHandler(EventIssue evt)
         {
             EventAlarm newEvent = poolManager.Pop<EventAlarm>(eventPrefab);
-            newEvent.transform.parent = parent;
-            newEvent.transform.localPosition = Vector3.zero;
+            newEvent.SetUp(parent);
 
             newEvent.SetNameAndDescription(evt.evt.evtName, evt.evt.evtDescription);
-            newEvent.DestroyEventAlarm(() => currentAlarms.Remove(newEvent));
+            newEvent.DisableUI(() =>
+            {
+                currentAlarms.Remove(newEvent);
+                OnAlarmSelect?.Invoke();
+            });
 
             currentAlarms.Add(newEvent);
 

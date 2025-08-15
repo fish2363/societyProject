@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ef599dc11424d73bb92c3df252debb4, type: 3}
-  m_Name: PoolManager
+  m_Script: {fileID: 11500000, guid: c3a4afc4c03a454f9c1df9a315b2b0bb, type: 3}
+  m_Name: Card
   m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 11400000, guid: b70d78d70b4f6ae4fbb77e47842df132, type: 2}
-  - {fileID: 11400000, guid: bdf1c166677481744b1087b572da56e9, type: 2}
+  poolingName: Card
+  prefab: {fileID: 4990069157192014934, guid: ba34c11a8c2d4fc47bc55279cd617633, type: 3}
+  initCount: 3

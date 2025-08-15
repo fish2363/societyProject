@@ -1,4 +1,5 @@
 ﻿
+using Assets._03.Member.CDH.Code.Combat;
 using DG.Tweening;
 using NUnit.Framework;
 using System;
@@ -10,32 +11,22 @@ using UnityEngine.UI;
 
 namespace Assets._03.Member.CDH.Code.Events
 {
-    public class EventAlarm : MonoBehaviour, IPoolable
+    public class EventAlarm : CustomUI
     {
         [SerializeField] private TextMeshProUGUI evtName, evtDescription;
         [SerializeField] private Button button;
 
-        [field: SerializeField] public PoolingItemSO PoolingType { get; set; }
-
-        public GameObject GameObject => gameObject;
         public bool isOpen { get; set; }
 
-        private AwaitableCompletionSource completionSource;
-        private Pool myPool;
-
-        private void Awake()
+        protected override void Awake()
         {
             button.onClick.AddListener(() => completionSource.SetResult());
         }
 
-        public void SetUpPool(Pool pool)
+        public override void ResetItem()
         {
-            myPool = pool;
-        }
+            base.ResetItem();
 
-        public void ResetItem()
-        {
-            completionSource = new AwaitableCompletionSource();
             transform.position = Vector3.zero;
             isOpen = false;
         }
@@ -44,13 +35,6 @@ namespace Assets._03.Member.CDH.Code.Events
         {
             evtName.text = name;
             evtDescription.text = description;
-        }
-
-        public async void DestroyEventAlarm(Action handler)
-        {
-            await completionSource.Awaitable;
-            myPool.Push(this);
-            handler?.Invoke();
         }
     }
 }
