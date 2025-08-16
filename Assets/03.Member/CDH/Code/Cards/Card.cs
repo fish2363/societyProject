@@ -1,25 +1,33 @@
 ﻿using Assets._03.Member.CDH.Code.Combat;
 using DG.Tweening;
-using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Assets._03.Member.CDH.Code.Cards
 {
     public class Card : CustomUI, IPointerEnterHandler, IPointerExitHandler
     {
+        [SerializeField] private TextMeshProUGUI cardName, cardDescription;
         [SerializeField] private float movingValue;
         [SerializeField] private float duration;
-        [SerializeField] private Button button;
 
         private Vector3 ogPosition;
+        private CardInfo cardInfo;
 
-        protected override void Awake()
+        public CardInfo CardInfo => cardInfo;
+
+        public void SetResult()
         {
-            base.Awake();
+            completionSource.SetResult();
+        }
 
-            button.onClick.AddListener(() => completionSource.SetResult());
+        public void SetUp(Transform parent, CardInfo cardInfo)
+        {
+            SetUp(parent);
+            this.cardInfo = cardInfo;
+            cardName.text = cardInfo.name;
+            cardDescription.text = cardInfo.description;
         }
 
         public void OnPointerEnter(PointerEventData eventData)

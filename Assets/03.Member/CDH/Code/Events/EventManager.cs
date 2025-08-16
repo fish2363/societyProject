@@ -12,7 +12,7 @@ namespace Assets._03.Member.CDH.Code.Events
     {
         public UnityEvent OnAlarmSelect;
 
-        [SerializeField] private GameEventChannelSO eventChannelSO;
+        [SerializeField] private GameEventChannelSO eventChannel;
         [SerializeField] private PoolingItemSO eventPrefab;
         [SerializeField] private Transform parent;
         [SerializeField] private float alarmDuration;
@@ -25,7 +25,7 @@ namespace Assets._03.Member.CDH.Code.Events
         {
             currentAlarms = new List<EventAlarm>();
 
-            eventChannelSO.AddListener<EventIssue>(EventIssueHandler);
+            eventChannel.AddListener<EventIssue>(EventIssueHandler);
         }
 
         private void EventIssueHandler(EventIssue evt)
@@ -34,9 +34,9 @@ namespace Assets._03.Member.CDH.Code.Events
             newEvent.SetUp(parent);
 
             newEvent.SetNameAndDescription(evt.evt.evtName, evt.evt.evtDescription);
-            newEvent.DisableUI(() =>
+            newEvent.DisableUI((evt) =>
             {
-                currentAlarms.Remove(newEvent);
+                currentAlarms.Remove(evt as EventAlarm);
                 OnAlarmSelect?.Invoke();
             });
 

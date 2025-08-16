@@ -38,11 +38,11 @@ namespace Assets._03.Member.CDH.Code.Combat
             myPool = pool;
         }
 
-        public virtual async void DisableUI(Action handler)
+        public virtual async void DisableUI(Action<CustomUI> handler)
         {
             await completionSource.Awaitable;
             myPool.Push(this);
-            handler?.Invoke();
+            handler?.Invoke(this);
         }
     }
 }

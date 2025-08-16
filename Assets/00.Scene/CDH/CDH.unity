@@ -396,11 +396,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  eventChannelSO: {fileID: 11400000, guid: 089200b8cba84ee4aae7f43a9470ee6f, type: 2}
+  eventChannel: {fileID: 11400000, guid: 089200b8cba84ee4aae7f43a9470ee6f, type: 2}
   eventPrefab: {fileID: 11400000, guid: b70d78d70b4f6ae4fbb77e47842df132, type: 2}
   parent: {fileID: 1091937921}
   alarmDuration: 1
-  alarmEndValue: 280
+  alarmEndValue: 200
   poolManager: {fileID: 1201893128}
 --- !u!1 &936144759
 GameObject:
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c72b8110d049c199b59d4f0f74dad9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolManager: {fileID: 11400000, guid: 48945c2ebb7462e4ba9ea159c0738dc0, type: 2}
+  poolManager: {fileID: 11400000, guid: 7bed1c9e62cd9764c90352123724864b, type: 2}
 --- !u!1 &1291535799
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5853fa4730d5c5f4b836d3c7793a9c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventChannel: {fileID: 11400000, guid: 089200b8cba84ee4aae7f43a9470ee6f, type: 2}
+  cardsSO: {fileID: 11400000, guid: c9494c9a3fead534fa383063afc222b8, type: 2}
   card: {fileID: 11400000, guid: bdf1c166677481744b1087b572da56e9, type: 2}
   parent: {fileID: 1151283662}
   poolManager: {fileID: 1201893128}
@@ -1202,7 +1204,7 @@ SceneRoots:
   - {fileID: 491237164}
   - {fileID: 2130275668}
   - {fileID: 1642860596}
-  - {fileID: 795895671}
   - {fileID: 1408001906}
   - {fileID: 1878152889}
+  - {fileID: 795895671}
   - {fileID: 1291535801}

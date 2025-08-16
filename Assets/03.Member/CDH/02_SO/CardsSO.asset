@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a59945f906b5f14aaf645c60c90d58c, type: 3}
+  m_Name: CardsSO
+  m_EditorClassIdentifier: 
+  cards:
+  - name: "\uC124\uB4DD\uD615"
+    description: "\uC0C1\uB300\uAD6D\uC744 \uC124\uB4DD\uD574\uC11C \uC815\uCC45
+      \uBC29\uD5A5\uC744 \uBC14\uAFB8\uAC70\uB098 \uD611\uB825\uC744 \uC720\uB3C4\uD558\uB294
+      \uCE74\uB4DC"
+  - name: "\uC555\uBC15\uD615"
+    description: "\uC81C\uC7AC, \uBB34\uC5ED \uC81C\uD55C \uAC19\uC740 \uBC29\uC2DD\uC73C\uB85C
+      \uC555\uB825\uC744 \uAC00\uD574 \uC0C1\uB300\uAD6D\uC758 \uD589\uB3D9\uC744
+      \uC81C\uD55C\uD558\uB294 \uCE74\uB4DC"
+  - name: "\uC9C0\uC6D0\uD615"
+    description: "\uC790\uBCF8\uC774\uB098 \uAE30\uC220, \uC790\uC6D0 \uAC19\uC740
+      \uAC78 \uC9C0\uC6D0\uD574\uC11C \uC0C1\uB300\uAD6D\uC758 \uD638\uAC10\uC744
+      \uC5BB\uAC70\uB098 \uD611\uB825\uC744 \uAC15\uD654\uD558\uB294 \uCE74\uB4DC"
