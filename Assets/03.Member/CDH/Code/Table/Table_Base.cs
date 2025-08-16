@@ -33,7 +33,7 @@ public class Table_Base
 
     protected void Save_Binary(string _Name, object _Obj)
     {
-        string path = GetTablePath() + "/Table/Resources/" + "Table_" + _Name + ".txt";
+        string path = GetTablePath() + "/03.Member/CDH/Table/Resources/" + "Table_" + _Name + ".txt";
 
         var b = new BinaryFormatter();
 
@@ -48,7 +48,7 @@ public class Table_Base
     {
         string ext = ".csv";
 
-        string path = GetTablePath() + "/Document/";
+        string path = GetTablePath() + "/03.Member/CDH/Document/";
 
         FileStream file = new FileStream(path + _Name + ext, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 

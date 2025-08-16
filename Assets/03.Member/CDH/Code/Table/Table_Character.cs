@@ -47,7 +47,7 @@ public class Table_Character : Table_Base
             if (Read(reader, info, row, _StartCol) == false)
                 break;
 
-            Dictionary.Add(info.Id, info);
+            Dictionary.Add(info.Id, info);   
         }
     }
 
@@ -64,6 +64,7 @@ public class Table_Character : Table_Base
         _Reader.Get(_Row, ref _Info.Img);
         _Reader.Get(_Row, ref _Info.Name);
         _Reader.Get(_Row, ref _Info.Dec);
+        // 가져오는 순서 원본 txt파일의 순서랑 맞춰야 하는듯
 
         return true;
     }

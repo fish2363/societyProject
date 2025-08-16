@@ -16,7 +16,7 @@ namespace Assets._03.Member.CDH.Code.Events
         [SerializeField] private PoolingItemSO eventPrefab;
         [SerializeField] private Transform parent;
         [SerializeField] private float alarmDuration;
-        [Range(200, 300), SerializeField] private float alarmEndValue;
+        [SerializeField] private Transform alarmEndValue;
         [SerializeField] private PoolManagerMono poolManager;
 
         private List<EventAlarm> currentAlarms;
@@ -50,7 +50,7 @@ namespace Assets._03.Member.CDH.Code.Events
                 else
                 {
                     alarm.isOpen = true;
-                    alarm.transform.DOMoveY(alarm.transform.position.y - alarmEndValue, alarmDuration);
+                    alarm.transform.DOMoveY(alarm.transform.position.y - Mathf.Abs(parent.position.y - alarmEndValue.position.y), alarmDuration);
                 }
                 alarm.gameObject.name = sibling.ToString();
                 alarm.transform.SetSiblingIndex(sibling);

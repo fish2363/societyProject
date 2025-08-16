@@ -12,7 +12,7 @@ public class TableMgr
     public void Init()
     {
 #if UNITY_EDITOR
-        //Character.Init_Csv("Character", 1, 0);
+        Character.Init_Csv("Character", 1, 0);
 #else
         Character.Init_Binary("Character");
 #endif
@@ -20,12 +20,7 @@ public class TableMgr
 
     public void Save()
     {
-        //Character.Save_Binary("Character");
-
-        //Vector3.Distance();//거리
-        //Vector3.Dot();//내적
-        //Vector3.Cross();//외적
-        //Vector3.Normalize();//정규화
+        Character.Save_Binary("Character");
 
 #if UNITY_EDITOR
         AssetDatabase.Refresh();
