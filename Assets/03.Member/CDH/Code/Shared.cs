@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets._03.Member.CDH.Code
+﻿namespace Assets._03.Member.CDH.Code
 {
     public class Shared
     {
-        public static TableMgr TableMgr;
+        public static TableManager TableMgr;
 
-        public static TableMgr InitTableMgr()
+        public static TableManager InitTableMgr()
         {
-            if(TableMgr == null)
+            if (TableMgr == null)
             {
-                TableMgr = new TableMgr();
+                TableMgr = new TableManager();
                 TableMgr.Init();
             }
 

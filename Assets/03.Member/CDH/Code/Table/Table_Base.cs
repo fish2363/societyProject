@@ -37,6 +37,13 @@ public class Table_Base
 
         var b = new BinaryFormatter();
 
+        string directoryPath = Path.GetDirectoryName(path);
+        if(!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+            File.Create(path);
+        }
+
         Stream stream = File.Open(path, FileMode.OpenOrCreate, FileAccess.Write);
 
         b.Serialize(stream, _Obj);

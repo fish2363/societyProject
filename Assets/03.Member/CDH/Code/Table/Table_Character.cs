@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class Table_Character : Table_Base
 {
     [Serializable]
-    public class Info
+    public class CharacterInfo
     {
         public int Id;
         public byte Type;
@@ -16,9 +16,9 @@ public class Table_Character : Table_Base
         public int Dec;
     }
 
-    public Dictionary<int, Info> Dictionary = new Dictionary<int, Info>();
+    public Dictionary<int, CharacterInfo> Dictionary = new Dictionary<int, CharacterInfo>();
 
-    public Info Get(int _Id)
+    public CharacterInfo Get(int _Id)
     {
         if (Dictionary.ContainsKey(_Id))
             return Dictionary[_Id];
@@ -28,7 +28,7 @@ public class Table_Character : Table_Base
 
     public void Init_Binary(string _Name)
     {
-        Load_Binary<Dictionary<int, Info>>(_Name, ref Dictionary);
+        Load_Binary<Dictionary<int, CharacterInfo>>(_Name, ref Dictionary);
     }
 
     public void Save_Binary(string _Name)
@@ -42,7 +42,7 @@ public class Table_Character : Table_Base
 
         for(int row = _StartRow; row < reader.Row; ++row)
         {
-            Info info = new Info();
+            CharacterInfo info = new CharacterInfo();
 
             if (Read(reader, info, row, _StartCol) == false)
                 break;
@@ -51,7 +51,7 @@ public class Table_Character : Table_Base
         }
     }
 
-    protected bool Read(CsvReader _Reader, Info _Info, int _Row, int _Col)
+    protected bool Read(CsvReader _Reader, CharacterInfo _Info, int _Row, int _Col)
     {
         if (_Reader.ResetRow(_Row, _Col) == false)
             return false;
