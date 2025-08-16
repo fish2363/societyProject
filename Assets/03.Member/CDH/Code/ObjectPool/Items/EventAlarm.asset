@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ef599dc11424d73bb92c3df252debb4, type: 3}
-  m_Name: PoolManager
+  m_Script: {fileID: 11500000, guid: c3a4afc4c03a454f9c1df9a315b2b0bb, type: 3}
+  m_Name: EventAlarm
   m_EditorClassIdentifier: 
-  itemList: []
+  poolingName: EventAlarm
+  prefab: {fileID: 8164325757169480659, guid: 13f0aefcbf2a1f24b8dd6805445da2e4, type: 3}
+  initCount: 3
