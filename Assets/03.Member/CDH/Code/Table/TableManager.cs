@@ -8,23 +8,23 @@ using UnityEditor;
 
 public class TableManager
 {
-    public Table_Character Character = new Table_Character();
+    public Table_Event Event = new Table_Event();
     public Table_Card Card = new Table_Card();
     
     public void Init()
     {
 #if UNITY_EDITOR
-        Character.Init_Csv("Character", 1, 0);
+        Event.Init_Csv("Event", 1, 0);
         Card.Init_Csv("Card", 1, 0);
 #else
-        Character.Init_Binary("Character");
+        Event.Init_Binary("Event");
         Card.Init_Binary("Card");
 #endif
     }
 
     public void Save()
     {
-        Character.Save_Binary("Character");
+        Event.Save_Binary("Event");
         Card.Save_Binary("Card");
 
 #if UNITY_EDITOR

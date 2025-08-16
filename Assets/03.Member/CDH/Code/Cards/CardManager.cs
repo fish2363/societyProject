@@ -1,11 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Assets._03.Member.CDH.Code.GameEvents;
 using Assets._03.Member.CDH.Code.Table;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
-using static Assets._03.Member.CDH.Code.Table.Table_Card;
 
 namespace Assets._03.Member.CDH.Code.Cards
 {
@@ -30,7 +26,7 @@ namespace Assets._03.Member.CDH.Code.Cards
             cardTable = tableManager.Card;
 
             int count = cardTable.GetCount();
-            for(int i = 1; i <= count; i++)
+            for (int i = 1; i <= count; i++)
             {
                 cardInfos.Add(cardTable.Get(i));
             }
@@ -38,7 +34,7 @@ namespace Assets._03.Member.CDH.Code.Cards
 
         public void CreateCards()
         {
-            foreach(CardInfo cardInfo in cardInfos)
+            foreach (CardInfo cardInfo in cardInfos)
             {
                 Card newCard = poolManager.Pop<Card>(card);
                 newCard.SetUp(parent, cardInfo);
@@ -50,7 +46,7 @@ namespace Assets._03.Member.CDH.Code.Cards
 
         public void AfterSelectCard(Card selectedCard)
         {
-            if(currentCards.Contains(selectedCard))
+            if (currentCards.Contains(selectedCard))
                 currentCards.Remove(selectedCard);
 
             CardEvent cardEvent = EventEvents.OnCardEvent;

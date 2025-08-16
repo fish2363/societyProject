@@ -29,10 +29,4 @@ namespace Assets._03.Member.CDH.Code.Cards
             return tempInfo;
         }
     }
-    // 
-    // [CreateAssetMenu(fileName = "CardsSO", menuName = "SO/Card")]
-    // public class CardsSO : ScriptableObject
-    // {
-    //     public List<CardInfo> cards;
-    // }
 }

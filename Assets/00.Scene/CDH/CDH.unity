@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &83959582 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7125335711177595429, guid: f8cb7565dad0ac74b9cef450baa72b90, type: 3}
+  m_PrefabInstance: {fileID: 5047194004037978317}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63b1b48a45fde34f9bab01e600b2f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &187067278
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +532,34 @@ PrefabInstance:
     - target: {fileID: 1100560562396992896, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
       propertyPath: m_Name
       value: EventTester
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112334341404710107, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
+      propertyPath: OnTestEventRasie.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112334341404710107, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
+      propertyPath: OnTestEventRasie.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112334341404710107, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
+      propertyPath: OnTestEventRasie.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 83959582}
+    - target: {fileID: 2112334341404710107, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
+      propertyPath: OnTestEventRasie.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112334341404710107, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
+      propertyPath: OnTestEventRasie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112334341404710107, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
+      propertyPath: OnTestEventRasie.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets._03.Member.CDH.Code.Events.EventManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112334341404710107, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
+      propertyPath: OnTestEventRasie.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5433512912597941410, guid: 14fe775fcf3ba104da7305ef4d09f69d, type: 3}
       propertyPath: m_LocalPosition.x

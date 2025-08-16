@@ -1,34 +1,33 @@
 using System;
 using System.Collections.Generic;
 
-public class Table_Character : Table_Base
+public class Table_Event : Table_Base
 {
     [Serializable]
-    public class CharacterInfo
+    public class EventInfo
     {
         public int Id;
-        public byte Type;
-        public int Skill;
-        public int Stat;
-        public string Prefabs;
-        public string Img;
-        public int Name;
-        public int Dec;
+        public string EventName;
+        public string EventDescription;
     }
 
-    public Dictionary<int, CharacterInfo> Dictionary = new Dictionary<int, CharacterInfo>();
+    public Dictionary<int, EventInfo> Dictionary = new Dictionary<int, EventInfo>();
 
-    public CharacterInfo Get(int _Id)
+    public EventInfo Get(int _Id)
     {
         if (Dictionary.ContainsKey(_Id))
             return Dictionary[_Id];
 
         return null;
     }
+    public int GetCount()
+    {
+        return Dictionary.Count;
+    }
 
     public void Init_Binary(string _Name)
     {
-        Load_Binary<Dictionary<int, CharacterInfo>>(_Name, ref Dictionary);
+        Load_Binary<Dictionary<int, EventInfo>>(_Name, ref Dictionary);
     }
 
     public void Save_Binary(string _Name)
@@ -42,7 +41,7 @@ public class Table_Character : Table_Base
 
         for(int row = _StartRow; row < reader.Row; ++row)
         {
-            CharacterInfo info = new CharacterInfo();
+            EventInfo info = new EventInfo();
 
             if (Read(reader, info, row, _StartCol) == false)
                 break;
@@ -51,19 +50,14 @@ public class Table_Character : Table_Base
         }
     }
 
-    protected bool Read(CsvReader _Reader, CharacterInfo _Info, int _Row, int _Col)
+    protected bool Read(CsvReader _Reader, EventInfo _Info, int _Row, int _Col)
     {
         if (_Reader.ResetRow(_Row, _Col) == false)
             return false;
 
         _Reader.Get(_Row, ref _Info.Id);
-        //_Reader.Get(_Row, ref _Info.Type);
-        _Reader.Get(_Row, ref _Info.Skill);
-        _Reader.Get(_Row, ref _Info.Stat);
-        _Reader.Get(_Row, ref _Info.Prefabs);
-        _Reader.Get(_Row, ref _Info.Img);
-        _Reader.Get(_Row, ref _Info.Name);
-        _Reader.Get(_Row, ref _Info.Dec);
+        _Reader.Get(_Row, ref _Info.EventName);
+        _Reader.Get(_Row, ref _Info.EventDescription);
         // 가져오는 순서 원본 txt파일의 순서랑 맞춰야 하는듯
 
         return true;

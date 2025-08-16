@@ -20,20 +20,34 @@ namespace Assets._03.Member.CDH.Code.Events
         [SerializeField] private PoolManagerMono poolManager;
 
         private List<EventAlarm> currentAlarms;
+        private List<EventInfo> eventInfos;
+        private TableManager tableManager;
+        private Table_Event eventTable;
 
         private void Awake()
         {
             currentAlarms = new List<EventAlarm>();
+            eventInfos = new List<EventInfo>();
 
-            eventChannel.AddListener<EventIssue>(EventIssueHandler);
+            tableManager = Shared.InitTableMgr();
+            eventTable = tableManager.Event;
+
+            int count = eventTable.GetCount();
+            for (int i = 1; i <= count; i++)
+            {
+                eventInfos.Add(eventTable.Get(i));
+            }
         }
 
-        private void EventIssueHandler(EventIssue evt)
+        public void CreateEvent()
         {
+            int num = Random.Range(0, eventInfos.Count);
+            EventInfo randomEvent = eventInfos[num];
+
             EventAlarm newEvent = poolManager.Pop<EventAlarm>(eventPrefab);
             newEvent.SetUp(parent);
 
-            newEvent.SetNameAndDescription(evt.evt.evtName, evt.evt.evtDescription);
+            newEvent.SetNameAndDescription(randomEvent.evtName, randomEvent.evtDescription);
             newEvent.DisableUI((evt) =>
             {
                 currentAlarms.Remove(evt as EventAlarm);
