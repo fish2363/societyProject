@@ -19,6 +19,7 @@ namespace Assets._03.Member.CDH.Code.Cards
 
         public void SetResult()
         {
+            ogPosition = transform.localPosition;
             completionSource.SetResult();
         }
 
@@ -32,12 +33,12 @@ namespace Assets._03.Member.CDH.Code.Cards
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            transform.DOMoveY(ogPosition.y + movingValue, duration);
+            transform.DOLocalMoveY(ogPosition.y + movingValue, duration);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            transform.DOMoveY(ogPosition.y, duration);
+            transform.DOLocalMoveY(ogPosition.y, duration);
         }
     }
 }
