@@ -317,7 +317,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5911694553116194314}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4453060377608288400}
+        m_TargetAssemblyTypeName: Assets._03.Member.CDH.Code.Events.EventAlarm, Assembly-CSharp
+        m_MethodName: SetResult
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4082465987394211415
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,10 +729,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befc15a39c477594ab9c868d3dda0729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PoolingType>k__BackingField: {fileID: 11400000, guid: b70d78d70b4f6ae4fbb77e47842df132, type: 2}
   evtName: {fileID: 2616610510081530217}
   evtDescription: {fileID: 8120150410433430811}
-  button: {fileID: 3103729684817238093}
-  <PoolingType>k__BackingField: {fileID: 11400000, guid: b70d78d70b4f6ae4fbb77e47842df132, type: 2}
 --- !u!1 &8525876503448537210
 GameObject:
   m_ObjectHideFlags: 0

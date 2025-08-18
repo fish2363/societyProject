@@ -8,16 +8,19 @@ using UnityEngine;
 
 namespace Assets._03.Member.CDH.Code.Events
 {
-    [CreateAssetMenu(fileName = "EventsSO", menuName = "SO/EventsSO")]
-    public class EventsSO : ScriptableObject
-    {
-        public List<EventType> events;
-    }
-
     [Serializable]
-    public struct EventType
+    public struct EventInfo
     {
         public string evtName;
         public string evtDescription;
+
+        public static implicit operator EventInfo(Table_Event.EventInfo eventInfo)
+        {
+            EventInfo tempInfo = new EventInfo();
+            tempInfo.evtName = eventInfo.EventName;
+            tempInfo.evtDescription = eventInfo.EventDescription;
+
+            return tempInfo;
+        }
     }
 }

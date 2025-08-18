@@ -1,14 +1,15 @@
-﻿using Assets._03.Member.CDH.Code.Events;
+﻿using Assets._03.Member.CDH.Code.Cards;
+using Assets._03.Member.CDH.Code.Events;
 
 namespace Assets._03.Member.CDH.Code.GameEvents
 {
     public static class EventEvents
     {
-        readonly public static EventIssue OnEventIssue = new EventIssue(); // 이벤트 시작
+        readonly public static CardEvent OnCardEvent = new CardEvent();
     }
 
-    public class EventIssue : GameEvent
+    public class CardEvent : GameEvent
     {
-        public EventType evt;
+        public CardInfo cardInfo;
     }
 }

@@ -12,31 +12,45 @@ namespace Assets._03.Member.CDH.Code.Events
     {
         public UnityEvent OnAlarmSelect;
 
-        [SerializeField] private GameEventChannelSO eventChannelSO;
+        [SerializeField] private GameEventChannelSO eventChannel;
         [SerializeField] private PoolingItemSO eventPrefab;
         [SerializeField] private Transform parent;
         [SerializeField] private float alarmDuration;
-        [Range(200, 300), SerializeField] private float alarmEndValue;
+        [SerializeField] private Transform alarmEndValue;
         [SerializeField] private PoolManagerMono poolManager;
 
         private List<EventAlarm> currentAlarms;
+        private List<EventInfo> eventInfos;
+        private TableManager tableManager;
+        private Table_Event eventTable;
 
         private void Awake()
         {
             currentAlarms = new List<EventAlarm>();
+            eventInfos = new List<EventInfo>();
 
-            eventChannelSO.AddListener<EventIssue>(EventIssueHandler);
+            tableManager = Shared.InitTableMgr();
+            eventTable = tableManager.Event;
+
+            int count = eventTable.GetCount();
+            for (int i = 1; i <= count; i++)
+            {
+                eventInfos.Add(eventTable.Get(i));
+            }
         }
 
-        private void EventIssueHandler(EventIssue evt)
+        public void CreateEvent()
         {
+            int num = Random.Range(0, eventInfos.Count);
+            EventInfo randomEvent = eventInfos[num];
+
             EventAlarm newEvent = poolManager.Pop<EventAlarm>(eventPrefab);
             newEvent.SetUp(parent);
 
-            newEvent.SetNameAndDescription(evt.evt.evtName, evt.evt.evtDescription);
-            newEvent.DisableUI(() =>
+            newEvent.SetNameAndDescription(randomEvent.evtName, randomEvent.evtDescription);
+            newEvent.DisableUI((evt) =>
             {
-                currentAlarms.Remove(newEvent);
+                currentAlarms.Remove(evt as EventAlarm);
                 OnAlarmSelect?.Invoke();
             });
 
@@ -50,7 +64,7 @@ namespace Assets._03.Member.CDH.Code.Events
                 else
                 {
                     alarm.isOpen = true;
-                    alarm.transform.DOMoveY(alarm.transform.position.y - alarmEndValue, alarmDuration);
+                    alarm.transform.DOMoveY(alarm.transform.position.y - Mathf.Abs(parent.position.y - alarmEndValue.position.y), alarmDuration);
                 }
                 alarm.gameObject.name = sibling.ToString();
                 alarm.transform.SetSiblingIndex(sibling);
