@@ -1,11 +1,24 @@
 using UnityEngine;
 
+public enum Gender { Male, Female }
+
+
+
 public class Human : MonoBehaviour
 {
     HumanSettingSO settingSO;
 
     [SerializeField] HatContainer hatContainer;
+    public Gender npcGender;
+    public string npcName;
 
+<<<<<<< Updated upstream
+    public bool IsWorker { get; private set; }
+=======
+    [SerializeField] string[] maleFirstNames = { "민수", "준호", "현우", "지훈" };
+    [SerializeField] string[] femaleFirstNames = { "지민", "수연", "서연", "민지" };
+    [SerializeField] string[] lastNames = { "김", "이", "박", "최" };
+>>>>>>> Stashed changes
 
     [HideInInspector]
     public Vector3 position;
@@ -40,16 +53,39 @@ public class Human : MonoBehaviour
         hatContainer.RandomWearHat();
     }
 
-    public void Initialize(HumanSettingSO settings, Transform target)
+    public void Initialize(HumanSettingSO settings, Transform target, Vector3 initialForward)
     {
         this.target = target;
-        settingSO = settings;
+        this.settingSO = settings;
 
         position = cachedTransform.position;
-        forward = cachedTransform.forward;
+        forward = initialForward.normalized; // 스폰 시 방향 그대로 사용
 
         float startSpeed = (settings.minSpeed + settings.maxSpeed) / 2;
+<<<<<<< Updated upstream
+        velocity = forward * startSpeed;
+
+        cachedTransform.forward = forward; // 시각적으로도 초기 방향 적용
+=======
         velocity = transform.forward * startSpeed;
+        npcGender = GetRandomGender();
+        npcName = GenerateRandomName(npcGender);
+    }
+
+    public Gender GetRandomGender()
+    {
+        return Random.value < 0.5f ? Gender.Male : Gender.Female;
+    }
+    public string GenerateRandomName(Gender gender)
+    {
+        string firstName = gender == Gender.Male
+            ? maleFirstNames[Random.Range(0, maleFirstNames.Length)]
+            : femaleFirstNames[Random.Range(0, femaleFirstNames.Length)];
+
+        string lastName = lastNames[Random.Range(0, lastNames.Length)];
+
+        return lastName + firstName;
+>>>>>>> Stashed changes
     }
     public void UpdateBoid()
     {

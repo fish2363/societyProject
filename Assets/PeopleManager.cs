@@ -19,7 +19,7 @@ public class PeopleManager : MonoBehaviour
 
     void Update()
     {
-        if (_peoples != null)
+        if (_peoples.Count > 0)
         {
 
             int numBoids = _peoples.Count;
