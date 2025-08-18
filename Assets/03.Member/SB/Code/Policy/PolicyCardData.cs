@@ -15,6 +15,6 @@ public class PolicyCardData : ScriptableObject
 
 public enum PolicyType
 {
-    Ecofriendly,
-    Industryfriendly
+    Eco,
+    Industry
 }

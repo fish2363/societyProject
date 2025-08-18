@@ -10,6 +10,7 @@ public class PolicyCard : MonoBehaviour
         cardBase.PolicyType.text = policyCardData.policyType.ToString();
         cardBase.CardName.text = policyCardData.policyName;
         cardBase.PolicyTypeIcon.sprite = policyCardData.policyTypeIcon;
+        cardBase.Cost.text = policyCardData.policyCost.ToString();
         Instantiate(cardBase, parent.transform);
     }
 

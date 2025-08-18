@@ -8,5 +8,6 @@ public class PolicyCardBase : MonoBehaviour
    public TextMeshProUGUI CardName;
    public TextMeshProUGUI PolicyType;
    public Image PolicyTypeIcon;
-   
+   public TextMeshProUGUI Cost;
+
 }
