@@ -8,8 +8,9 @@ public class Human : MonoBehaviour
 {
     HumanSettingSO settingSO;
 
-    [SerializeField] HatContainer hatContainer;
+    [SerializeField] HatContainer[] hatContainers;
     [SerializeField] Gender npcGender;
+    [SerializeField] Animator[] animator;
     [SerializeField] string npcName;
 
     public bool IsWorker { get; private set; }
@@ -42,11 +43,7 @@ public class Human : MonoBehaviour
         cachedTransform = transform;
     }
 
-    private void Start()
-    {
-        hatContainer.RandomWearHat();
-    }
-
+   
     public void Initialize(HumanSettingSO settings, Transform target, Vector3 initialForward,Gender gender, string name)
     {
         this.target = target;
@@ -62,10 +59,20 @@ public class Human : MonoBehaviour
         velocity = transform.forward * startSpeed;
         npcGender = gender;
         npcName = name;
+        if (npcGender == Gender.Male)
+        {
+            animator[0].gameObject.SetActive(true);
+            hatContainers[0].RandomWearHat();
+        }
+        else
+        {
+            animator[1].gameObject.SetActive(true);
+            hatContainers[1].RandomWearHat();
+        }
     }
 
-    
-    
+
+
     public void UpdateBoid()
     {
         Vector3 acceleration = Vector3.zero;

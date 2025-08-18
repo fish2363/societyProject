@@ -353,18 +353,18 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Male_Standing@Walking(Clone)
+    - name: Male_Standing@Walking@Walking(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Male_Standing
-      parentName: Male_Standing@Walking(Clone)
+      parentName: Male_Standing@Walking@Walking(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 100, y: 100, z: 100}
     - name: mixamorig:Hips
-      parentName: Male_Standing@Walking(Clone)
+      parentName: Male_Standing@Walking@Walking(Clone)
       position: {x: -0.0014143252, y: 2.072881, z: -0.005049649}
       rotation: {x: 0.000000021886077, y: 3.2851332e-17, z: 2.328307e-10, w: 1}
       scale: {x: 1, y: 1.0000001, z: 0.99999994}
@@ -580,7 +580,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: ae7c63d0a71b6b643b88d9ac019d4b95, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 4678a1ed741a3d8448b79ab6b47d414c, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
