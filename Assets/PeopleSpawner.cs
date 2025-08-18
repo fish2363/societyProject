@@ -4,36 +4,34 @@ public class PeopleSpawner : MonoBehaviour
 {
     public HumanSettingSO settings;
 
-    public enum GizmoType { Never, SelectedOnly, Always }
-
     public Human prefab;
     public float spawnRadius = 10;
-    public int spawnCount = 10;
-    public Color colour;
-    public GizmoType showSpawnRegion;
     public int population;
     private float timer;
+    [Header("행복도")]
     public float happiness = 50f;
+    [Header("생성 주기")]
     public float checkInterval = 1f;
 
-    void Awake()
+    [SerializeField, Header("남자 이름")] string[] maleFirstNames = { "연호", "소빈", "동호" };
+    [SerializeField, Header("여자 이름")] string[] femaleFirstNames = { "연호", "소빈", "동호" };
+    [SerializeField, Header("성씨")] string[] lastNames = { "김", "이", "박", "최" };
+
+
+    public Gender GetRandomGender()
     {
-        //for (int i = 0; i < spawnCount; i++)
-        //{
-        //    Vector2 randomPoint = Random.insideUnitCircle * spawnRadius;
-        //    Vector3 pos = transform.position + new Vector3(randomPoint.x, 0f, randomPoint.y);
-        //    Human boid = Instantiate(prefab);
-        //    boid.Initialize(settings, null);
-        //    boid.transform.position = pos;
-
-        //    // 랜덤 방향을 보고 생성
-        //    Vector3 dirFromCenter = (pos - transform.position).normalized;
-        //    Vector3 randomOffset = new Vector3(Random.Range(-0.3f, 0.3f), 0f, Random.Range(-0.3f, 0.3f));
-        //    Vector3 finalDir = (dirFromCenter + randomOffset).normalized;
-        //    boid.transform.rotation = Quaternion.LookRotation(finalDir, Vector3.up);
-        //}
+        return Random.value < 0.5f ? Gender.Male : Gender.Female;
     }
+    public string GenerateRandomName(Gender gender)
+    {
+        string firstName = gender == Gender.Male
+            ? maleFirstNames[Random.Range(0, maleFirstNames.Length)]
+            : femaleFirstNames[Random.Range(0, femaleFirstNames.Length)];
 
+        string lastName = lastNames[Random.Range(0, lastNames.Length)];
+
+        return lastName + firstName;
+    }
 
     private void Update()
     {
@@ -75,8 +73,9 @@ public class PeopleSpawner : MonoBehaviour
         if (randomDir == Vector3.zero) randomDir = Vector3.forward;
 
         Human boid = Instantiate(prefab);
+        Gender gender = GetRandomGender();
         boid.transform.position = pos;
-        boid.Initialize(settings, null, randomDir); // 방향 전달
+        boid.Initialize(settings, null, randomDir,gender,GenerateRandomName(gender)); // 방향 전달
     }
 
     void RemovePeople(int count)
