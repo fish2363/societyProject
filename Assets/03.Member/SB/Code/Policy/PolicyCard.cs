@@ -1,18 +1,54 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class PolicyCard : MonoBehaviour
 {
+    [SerializeField] private PolicyEffect myPolicyEffect;
+    public bool isSelected = false;
+    public Image Icon;
+    public TextMeshProUGUI CardName;
+    public TextMeshProUGUI PolicyType;
+    public Image PolicyTypeIcon;
+    public TextMeshProUGUI Cost;
+    public Image StampIcon;
 
-    public void CreateCard(PolicyCardBase cardBase,PolicyCardData policyCardData, GameObject parent)
+    private void Update()
     {
-        cardBase.Icon.sprite = policyCardData.Icon;
-        cardBase.CardName.text = policyCardData.policyName;
-        cardBase.PolicyType.text = policyCardData.policyType.ToString();
-        cardBase.CardName.text = policyCardData.policyName;
-        cardBase.PolicyTypeIcon.sprite = policyCardData.policyTypeIcon;
-        cardBase.Cost.text = policyCardData.policyCost.ToString();
-        Instantiate(cardBase, parent.transform);
+
+      
+
+
     }
+    public void CreateCard(PolicyCardData policyCardData)
+    {
+        Icon.sprite = policyCardData.Icon;
+        CardName.text = policyCardData.policyName;
+        PolicyType.text = policyCardData.policyType.ToString();
+        CardName.text = policyCardData.policyName;
+        PolicyTypeIcon.sprite = policyCardData.policyTypeIcon;
+        Cost.text = policyCardData.policyCost.ToString();
+        myPolicyEffect = policyCardData.policyEffect;
 
+    }
+    public void OnClickBT()
+    {
 
+        isSelected = !isSelected;
+        if (isSelected)
+            SendPolicyEffect();
+        else
+            RemovePolicyEffect();
+    }
+    public void SendPolicyEffect()
+    {
+
+        StampIcon.gameObject.SetActive(true);
+        PolicyDackManager.Insstance.effectList.Add(myPolicyEffect);
+    }
+    public void RemovePolicyEffect()
+    {
+        StampIcon.gameObject.SetActive(false);
+        PolicyDackManager.Insstance.effectList.Remove(myPolicyEffect);
+    }
 }

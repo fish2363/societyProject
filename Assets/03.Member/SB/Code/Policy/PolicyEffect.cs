@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class PolicyEffectBase : ScriptableObject, IPolicyCard
+public abstract class PolicyEffect : ScriptableObject, IPolicyCard
 {
    virtual public void ApplyEffect()
     {
