@@ -5,7 +5,19 @@ namespace Assets._03.Member.CDH.Code.GameEvents
 {
     public static class EventEvents
     {
-        readonly public static CardEvent OnCardEvent = new CardEvent();
+        readonly public static CreateEventEvent OnCreateEvent = new();
+        readonly public static CardEvent OnCardEvent = new();
+    }
+
+    public class CreateEventEvent : GameEvent
+    {
+        public EVENT_TYPE eventType;
+
+        public CreateEventEvent Initializer(EVENT_TYPE evtType)
+        {
+            eventType = evtType;
+            return this;
+        }
     }
 
     public class CardEvent : GameEvent

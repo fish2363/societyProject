@@ -11,6 +11,7 @@ namespace Assets._03.Member.CDH.Code.Table
             public int Id;
             public string CardName;
             public string CardDescription;
+            public int EventType;
             public int CardType;
         }
 
@@ -62,6 +63,7 @@ namespace Assets._03.Member.CDH.Code.Table
             _Reader.Get(_Row, ref _Info.Id);
             _Reader.Get(_Row, ref _Info.CardName);
             _Reader.Get(_Row, ref _Info.CardDescription);
+            _Reader.Get(_Row, ref _Info.EventType);
             _Reader.Get(_Row, ref _Info.CardType);
 
             return true;

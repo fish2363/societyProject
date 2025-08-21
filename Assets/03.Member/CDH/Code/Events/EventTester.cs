@@ -1,16 +1,19 @@
-﻿using UnityEngine;
+﻿using Assets._03.Member.CDH.Code.GameEvents;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets._03.Member.CDH.Code.Events
 {
     public class EventTester : MonoBehaviour
     {
-        public UnityEvent OnTestEventRasie;
+        [SerializeField] private EVENT_TYPE testEventType;
+        [SerializeField] private GameEventChannelSO eventChannelSO;
 
         [ContextMenu("TestEvent")]
         public void RasieEvent()
         {
-            OnTestEventRasie?.Invoke();
+            CreateEventEvent evt = EventEvents.OnCreateEvent.Initializer(testEventType);
+            eventChannelSO.RaiseEvent(evt);
         }
     }
 }

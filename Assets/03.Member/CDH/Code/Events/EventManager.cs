@@ -10,7 +10,7 @@ namespace Assets._03.Member.CDH.Code.Events
 {
     public class EventManager : MonoBehaviour
     {
-        public UnityEvent OnAlarmSelect;
+        public UnityEvent<EVENT_TYPE> OnAlarmSelect;
 
         [SerializeField] private GameEventChannelSO eventChannel;
         [SerializeField] private PoolingItemSO eventPrefab;
@@ -37,9 +37,16 @@ namespace Assets._03.Member.CDH.Code.Events
             {
                 eventInfos.Add(eventTable.Get(i));
             }
+
+            eventChannel.AddListener<CreateEventEvent>(HandleCreaateEventEvent);
         }
 
-        public void CreateEvent()
+        private void OnDestroy()
+        {
+            eventChannel.RemoveListener<CreateEventEvent>(HandleCreaateEventEvent);
+        }
+
+        public void HandleCreaateEventEvent(CreateEventEvent createEvent)
         {
             int num = Random.Range(0, eventInfos.Count);
             EventInfo randomEvent = eventInfos[num];
@@ -51,7 +58,7 @@ namespace Assets._03.Member.CDH.Code.Events
             newEvent.DisableUI((evt) =>
             {
                 currentAlarms.Remove(evt as EventAlarm);
-                OnAlarmSelect?.Invoke();
+                OnAlarmSelect?.Invoke(createEvent.eventType);
             });
 
             currentAlarms.Add(newEvent);

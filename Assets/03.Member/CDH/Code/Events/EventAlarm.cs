@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 namespace Assets._03.Member.CDH.Code.Events
 {
+    public enum EVENT_TYPE
+    {
+        Diplomacy = 0,
+        Select = 1,
+    }
+
     public class EventAlarm : CustomUI
     {
         [SerializeField] private TextMeshProUGUI evtName, evtDescription;

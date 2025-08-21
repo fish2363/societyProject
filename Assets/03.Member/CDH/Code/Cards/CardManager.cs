@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Assets._03.Member.CDH.Code.Events;
 using Assets._03.Member.CDH.Code.GameEvents;
 using Assets._03.Member.CDH.Code.Table;
 using UnityEngine;
@@ -32,33 +33,27 @@ namespace Assets._03.Member.CDH.Code.Cards
             }
         }
 
-        public void CreateCards()
+        public void CreateCards(EVENT_TYPE evtType)
         {
             foreach (CardInfo cardInfo in cardInfos)
             {
-                Card newCard = poolManager.Pop<Card>(card);
-                newCard.SetUp(parent, cardInfo);
-                newCard.ResetItem();
-                newCard.DisableUI((card) => AfterSelectCard(card as Card));
-                currentCards.Add(newCard);
+                if(evtType == cardInfo.eventType)
+                {
+                    Card newCard = poolManager.Pop<Card>(card);
+                    newCard.SetUp(parent, cardInfo);
+                    newCard.ResetItem();
+                    newCard.DisableUI((card) => AfterSelectCard(card as Card));
+                    currentCards.Add(newCard);
+                }
             }
         }
 
         public void AfterSelectCard(Card selectedCard)
         {
-            if (currentCards.Contains(selectedCard))
-                currentCards.Remove(selectedCard);
-
             CardEvent cardEvent = EventEvents.OnCardEvent;
             cardEvent.cardInfo = selectedCard.CardInfo;
 
             eventChannel.RaiseEvent(cardEvent);
-
-            foreach (Card card in currentCards)
-            {
-                currentCards.Remove(card);
-                poolManager.Push(card);
-            }
         }
     }
 }
