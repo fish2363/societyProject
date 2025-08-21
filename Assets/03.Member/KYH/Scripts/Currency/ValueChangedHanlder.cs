@@ -1,1 +1,1 @@
-public delegate void ValueChangedHanlder(NumericalValueType type, int value);
+public delegate void ValueChangedHanlder(NumericalValueType type, float value);

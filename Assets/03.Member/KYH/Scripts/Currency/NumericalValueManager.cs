@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,7 +6,15 @@ public class NumericalValueManager : MonoBehaviour
 {
     [SerializeField,Header("수치 UI 매니저")] private NumericalValueUIManager valueViewer;
 
-    public Dictionary<NumericalValueType, int> numericalValueDic;
+    public Dictionary<NumericalValueType, float> numericalValueDic;
+
+    [Header("기본적인 수치")]
+    [Header("기본 평균 온도"),SerializeField, Range(-40, 70)] public float defaultWarming = 15f;
+    [Header("기본 예상 세입"), SerializeField] public float defaultExpectedRevenue = 1000f;
+    [Header("기본 신뢰도"), SerializeField,Range(0,100)] public float defaultGlobalCredibility = 50f;
+    [Header("기본 생산효율"), SerializeField,Range(0,4)] public float defaultProductionMultiplier = 1f;
+
+    [Space]
 
     public static NumericalValueManager Instance;
 
@@ -13,13 +22,16 @@ public class NumericalValueManager : MonoBehaviour
 
     private void Awake()
     {
-        numericalValueDic = new Dictionary<NumericalValueType, int>
+        numericalValueDic = new();
+        foreach(NumericalValueType valueType in Enum.GetValues(typeof(NumericalValueType)))
         {
-            { NumericalValueType.Money, 0},
-            { NumericalValueType.Happiness, 0},
-            { NumericalValueType.PeopleCnt, 0},
-            { NumericalValueType.Warming, 0},
-        };
+            numericalValueDic.Add(valueType,0);
+        }
+        #region 기본값이 있는 수치들
+        numericalValueDic[NumericalValueType.Warming] = defaultWarming;
+        numericalValueDic[NumericalValueType.ExpectedRevenue] = defaultExpectedRevenue;
+        
+        #endregion
 
         if (Instance == null)
         {
@@ -40,7 +52,7 @@ public class NumericalValueManager : MonoBehaviour
         OnValueChanged -= valueViewer.HandleValueChanged;
     }
 
-    public int GetNumericalValue(NumericalValueType currencyType)
+    public float GetNumericalValue(NumericalValueType currencyType)
     {
         if (!numericalValueDic.ContainsKey(currencyType))
             return 0;
