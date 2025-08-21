@@ -18,8 +18,6 @@ MonoBehaviour:
   policyEffect: {fileID: 11400000, guid: 144c11361f067674894072df50bbafa5, type: 2}
   policyTypeIcon: {fileID: 21300000, guid: 6c49a0a234d3a83408789ef142d9afb5, type: 3}
   Icon: {fileID: 21300000, guid: e8d74926784b5ba45a672f9a0a114f19, type: 3}
-  description: "\u201C\uC9C0\uC6D0\uAE08\uC744 \uD1B5\uD574 \uCE5C\uD658\uACBD \uC2DC\uC124
-    \uAC74\uC124\uBE44\uB97C n% \uC808\uAC10\uD569\uB2C8\uB2E4. \uADF8\uB7EC\uB098
-    \uB9E4 \uD134 \uC790\uBCF8 n\uC774 \uAC10\uC18C\uD569\uB2C8\uB2E4. \uD658\uACBD
-    \uC9C0\uD45C\uB294 \uC0C1\uC2B9\uD558\uC9C0\uB9CC \uB2E8\uAE30 \uC790\uBCF8 \uBD80\uB2F4\uC774
-    \uBC1C\uC0DD\uD558\uB294 \uC815\uCC45\uC785\uB2C8\uB2E4.\u201D"
+  description: '"This policy reduces eco-friendly facility construction costs by
+    **n%** through subsidies, but decreases capital by **n** each turn. It improves
+    environmental indicators but adds short-term financial burden." '
