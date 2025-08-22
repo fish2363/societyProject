@@ -8,8 +8,7 @@ public class BuildingData : ScriptableObject
     public string buildingName;
     public GameObject buildingPrefab;
     public GameObject basePrefab;
-    public int cost;
- 
+     
    
   
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static Unity.Collections.AllocatorManager;
 
-public class GridBuildingSystem : MonoBehaviour
+public class GridBuildingSystem : Singleton<GridBuildingSystem>
 {
     [SerializeField] private Grid grid;
     public BuildingData blockToBuild;
@@ -17,11 +17,15 @@ public class GridBuildingSystem : MonoBehaviour
     private Vector3 detectScale;
     Vector3 drawPos;
     Vector3 baseSize;
-  
 
+
+    public void SetBuilding(BuildingData buildingData)
+    {
+        blockToBuild = buildingData;
+    }
     void Update()
     {
-      
+
 
         RaycastHit hit = TryGetRaycastHit(Input.mousePosition);
         Vector3 selectedPos = hit.point;
@@ -41,16 +45,16 @@ public class GridBuildingSystem : MonoBehaviour
             bool canCreate = CheckCanCreate();
             Color c = canCreate == true ? Color.green : Color.red;
             Renderer[] renderers = previewBlock.GetComponentsInChildren<Renderer>();
-            
+
             foreach (Renderer renderer in renderers)
             {
                 Material m = renderer.material;
                 c.a = 0.4f;
                 m.color = c;
             }
-              
-           
-            
+
+
+
             previewBlock.transform.position = previewBlockPos;
 
             if (Input.GetMouseButtonDown(0))
@@ -96,7 +100,7 @@ public class GridBuildingSystem : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(drawPos, detectScale);
     }
-    public void SetPriviewBlock(GameObject gameObject,Vector3 currentPos)
+    public void SetPriviewBlock(GameObject gameObject, Vector3 currentPos)
     {
         if (previewBlock)
             Destroy(previewBlock);
@@ -117,3 +121,4 @@ public class GridBuildingSystem : MonoBehaviour
         return hit;
     }
 }
+

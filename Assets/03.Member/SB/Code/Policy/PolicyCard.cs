@@ -79,6 +79,8 @@ public class PolicyCard : MonoBehaviour
 
     private IEnumerator HoverDelayFlip(float delay)
     {
+   
+
         float timer = 0f;
         while (timer < delay)
         {
@@ -121,3 +123,5 @@ public class PolicyCard : MonoBehaviour
             .OnComplete(() => { isFlipping = false; });
     }
 }
+
+
