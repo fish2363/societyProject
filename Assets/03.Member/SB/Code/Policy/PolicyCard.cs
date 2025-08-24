@@ -58,70 +58,55 @@ public class PolicyCard : MonoBehaviour
     {
         isHovering = true;
         if (!isback && hoverCoroutine == null)
-            hoverCoroutine = StartCoroutine(HoverDelayFlip(1.5f));
+            hoverCoroutine = StartCoroutine(HoverDelayFlip(0.5f));
+    }
+
+    private IEnumerator HoverDelayFlip(float delay)
+    {
+        float timer = 0f;
+        while (timer < delay)
+        {
+            if (!isHovering)
+            {
+                hoverCoroutine = null;
+                yield break;
+            }
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        FlipCard(true);
+        hoverCoroutine = null;
+    }
+
+    public void OnClickFlipBackButton()
+    {
+        if (isback && !isFlipping)
+            FlipCard(false);
+    }
+
+    private void FlipCard(bool toBack)
+    {
+        if (isFlipping) return;
+
+        isFlipping = true;
+        isback = toBack;
+
+        if (flipTween != null && flipTween.IsActive())
+            flipTween.Kill();
+
+        float targetY = transform.eulerAngles.y + 180f;
+        flipTween = transform.DORotate(new Vector3(0, targetY, 0), 0.5f)
+            .SetEase(Ease.InOutSine)
+            .OnComplete(() => { isFlipping = false; });
     }
 
     public void PointExit()
     {
         isHovering = false;
-
         if (hoverCoroutine != null)
         {
             StopCoroutine(hoverCoroutine);
             hoverCoroutine = null;
         }
-
-      
-        if (isback || isFlipping)
-            FlipCardToFront();
-    }
-
-
-    private IEnumerator HoverDelayFlip(float delay)
-    {
-   
-
-        float timer = 0f;
-        while (timer < delay)
-        {
-            if (!isHovering) yield break; // 마우스 떠나면 회전 취소
-            timer += Time.deltaTime;
-            yield return null;
-        }
-
-        FlipCardToBack();
-        hoverCoroutine = null;
-    }
-
-    private void FlipCardToBack()
-    {
-        if (isFlipping) return;
-        isFlipping = true;
-        isback = true;
-
-        if (flipTween != null && flipTween.IsActive())
-            flipTween.Kill();
-
-        float targetY = transform.eulerAngles.y + 180f;
-        flipTween = transform.DORotate(new Vector3(0, targetY, 0), 0.5f)
-            .SetEase(Ease.InOutSine)
-            .OnComplete(() => { isFlipping = false; });
-    }
-
-    private void FlipCardToFront()
-    {
-        if (isFlipping) return;
-        isFlipping = true;
-        isback = false;
-
-        if (flipTween != null && flipTween.IsActive())
-            flipTween.Kill();
-
-        float targetY = transform.eulerAngles.y + 180f;
-        flipTween = transform.DORotate(new Vector3(0, targetY, 0), 0.5f)
-            .SetEase(Ease.InOutSine)
-            .OnComplete(() => { isFlipping = false; });
     }
 }
-
-
