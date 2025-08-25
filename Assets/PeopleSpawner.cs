@@ -6,10 +6,7 @@ public class PeopleSpawner : MonoBehaviour
 
     public Human prefab;
     public float spawnRadius = 10;
-    public int population;
     private float timer;
-    [Header("青汗档")]
-    public float happiness = 50f;
     [Header("积己 林扁")]
     public float checkInterval = 1f;
 
@@ -45,7 +42,7 @@ public class PeopleSpawner : MonoBehaviour
 
     void HandlePopulation()
     {
-        float growth = GetPopulationGrowth(happiness);
+        float growth = GetPopulationGrowth(NumericalValueManager.Instance.GetNumericalValue(NumericalValueType.Happiness));
 
         if (growth > 0)
         {
@@ -53,14 +50,14 @@ public class PeopleSpawner : MonoBehaviour
             for (int i = 0; i < toSpawn; i++)
             {
                 SpawnPerson();
-                population++;
+                NumericalValueManager.Instance.ModifyNumericalValue(NumericalValueType.PeopleCnt,ModifyType.Add,1);
             }
         }
         else if (growth < 0)
         {
             int toRemove = Mathf.RoundToInt(Mathf.Abs(growth));
             RemovePeople(toRemove);
-            population -= toRemove;
+            NumericalValueManager.Instance.ModifyNumericalValue(NumericalValueType.PeopleCnt, ModifyType.Add, -1);
         }
     }
 
@@ -80,15 +77,13 @@ public class PeopleSpawner : MonoBehaviour
 
     void RemovePeople(int count)
     {
-        int idx = 0;
-        int rand = Random.Range(0, PeopleManager.PeopleList.Count - 1);
+        if (PeopleManager.PeopleList.Count < 1) return;
+        int rand;
 
-        foreach(Human human in PeopleManager.PeopleList)
-        {
-            if (human.IsWorker) return;
-            if (idx == rand) Destroy(human);
-            idx++;
-        }
+        do rand = Random.Range(0, PeopleManager.PeopleList.Count - 1);
+        while (PeopleManager.PeopleList[rand].IsWorker);
+
+        Destroy(PeopleManager.PeopleList[rand].gameObject);
     }
 
     float GetPopulationGrowth(float happiness)
