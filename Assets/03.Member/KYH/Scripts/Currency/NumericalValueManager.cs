@@ -13,6 +13,7 @@ public class NumericalValueManager : MonoBehaviour
     [Header("기본 예상 세입"), SerializeField] public float defaultExpectedRevenue = 1000f;
     [Header("기본 신뢰도"), SerializeField,Range(0,100)] public float defaultGlobalCredibility = 50f;
     [Header("기본 생산효율"), SerializeField,Range(0,4)] public float defaultProductionMultiplier = 1f;
+    [Header("기본 행복도"), SerializeField,Range(1,100)] public float defaultHappiness = 1f;
 
     [Space]
 
@@ -30,6 +31,7 @@ public class NumericalValueManager : MonoBehaviour
         #region 기본값이 있는 수치들
         numericalValueDic[NumericalValueType.Warming] = defaultWarming;
         numericalValueDic[NumericalValueType.ExpectedRevenue] = defaultExpectedRevenue;
+        numericalValueDic[NumericalValueType.Happiness] = defaultHappiness;
         
         #endregion
 
