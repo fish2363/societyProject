@@ -45,13 +45,13 @@ public class PolicyCard : MonoBehaviour
     public void SendPolicyEffect()
     {
         StampIcon.gameObject.SetActive(true);
-        PolicyDackManager.Insstance.effectList.Add(myPolicyEffect);
+        PolicyDackManager.Instance.effectList.Add(myPolicyEffect);
     }
 
     public void RemovePolicyEffect()
     {
         StampIcon.gameObject.SetActive(false);
-        PolicyDackManager.Insstance.effectList.Remove(myPolicyEffect);
+        PolicyDackManager.Instance.effectList.Remove(myPolicyEffect);
     }
 
     public void PointEnter()
