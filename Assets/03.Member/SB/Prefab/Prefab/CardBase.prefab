@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8989290496264381733}
   - component: {fileID: 7729961547196048989}
   m_Layer: 5
-  m_Name: CardBase 1
+  m_Name: CardBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
